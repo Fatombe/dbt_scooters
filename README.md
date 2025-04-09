@@ -39,6 +39,14 @@ dbt debug
 Дополнительная информация
 Для более подробной информации и документации посетите официальный сайт dbt.
 
+4. Активируйте PostGIS в базе PostgreSQL, если еще этого не делали:
+
+```sql
+create extension postgis schema public;
+```
+
+
+
 ```bash
 # Установка Python
 python --version # проверка версии python
