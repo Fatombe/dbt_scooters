@@ -66,8 +66,22 @@ models:
   - name: companies
     description: Scooter satistics by company
 
+
+  - name: events_full
+    description: User events enriched with meaningful types
+    config:
+      materialized: view
+
+  - name: events_stat
+    description: Overall user events statistics
+
 seeds:
   - name: scooters
     description: Scooter models info and statistics
+    config:
+      delimeter: ","
+
+  - name: event_types
+    description: Meaningful types of mobile app events
     config:
       delimeter: ","
