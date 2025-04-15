@@ -62,3 +62,12 @@ models:
     description: Number of simultaneous rides in time
     config:
       materialized: incremental
+
+  - name: companies
+    description: Scooter satistics by company
+
+seeds:
+  - name: scooters
+    description: Scooter models info and statistics
+    config:
+      delimeter: ","
