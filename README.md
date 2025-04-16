@@ -33,7 +33,9 @@ dbt debug: Проверяет конфигурацию и подключение
 create extension postgis schema public;
 ```
 
+## Полезные макросы
 
+- `dbt run-operation create_role --args "name: finance"` - создание роли в базе (на примере роли "finance")
 
 ```bash
 # Установка Python
@@ -99,11 +101,12 @@ dbt ls #просмотр всех моделей и источников
 dbt show -s trips_prep --output json # просмотр таблицы в терминале
 dbt show --inline "select current_setting('TIMEZONE')" # вывод в терминал информации о текущей зоне времени
 
-
+dbt run-operation create_role --args "name: finance" # выполнение DDL запросов
 
 --full-refresh # флаг полного обновления, сокращенно -f
 --select # выбор модели, сокращенно -s
 --log-level # логирование процессов, доступные опции для уровней журнала являются debug, info, warn, error или none.
 --debug # логирование процессов, сокращенно -d
 --vars #  передача модели строки с переменными в виде YAML-словаря
+--args # передача аргументов в макрос ПРОЕКТА
 ```

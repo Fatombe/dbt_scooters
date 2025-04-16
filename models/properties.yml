@@ -55,14 +55,6 @@ models:
       strategy: merge
       unidue_key: [ user_id, timestamp, type_id ]
   
-  - name: revenue_daily
-    description: Summary daily revenue
-    config:
-      materialized: incremental
-      strategy: merge
-      unique_key: date
-      full_refresh: false
-
   - name: trips_concurrency
     description: Number of simultaneous rides in time
     config:
