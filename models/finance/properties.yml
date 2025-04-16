@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: revenue_daily
+    description: Summary daily revenue
+    config:
+      materialized: incremental
+      strategy: merge
+      unique_key: date
+      full_refresh: false
