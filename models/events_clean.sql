@@ -1,4 +1,5 @@
-select distinct *
+select distinct *,
+  {{ updated_at() }}
 from {{ source('scooters_raw', 'events') }}
 {% if is_incremental() %}
   where "timestamp" > (select max("timestamp") from {{ this }})
