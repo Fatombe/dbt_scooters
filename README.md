@@ -119,6 +119,8 @@ dbt run-operation create_role --args "name: finance" # выполнение DDL 
 
 dbt source freshness # проверка свежести всех источников
 
+dbt test -s source:scooters_raw.users
+
 --full-refresh # флаг полного обновления, сокращенно -f
 --select # выбор модели, сокращенно -s
 --log-level # логирование процессов, доступные опции для уровней журнала являются debug, info, warn, error или none.
