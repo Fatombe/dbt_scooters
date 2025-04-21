@@ -56,6 +56,8 @@ models:
     data_tests:
       - unique:
           column_name: "date::text || age::text" 
+      - unique_key: 
+          columns: [date, age]
 
 
 
@@ -116,21 +118,3 @@ models:
 
   - name: trips_age_group
     description: Overall trips statistics by user age group
-
-
-
-seeds:
-  - name: scooters
-    description: Scooter models info and statistics
-    config:
-      delimeter: ","
-
-  - name: event_types
-    description: Meaningful types of mobile app events
-    config:
-      delimeter: ","
-
-  - name: age_groups
-    description: Age groups to split users for analysis
-    config:
-      delimeter: ","
