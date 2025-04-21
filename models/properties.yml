@@ -48,8 +48,13 @@ models:
     description: Trips prepared for analysis
     config:
       materialized: view
+
+
   - name: trips_stat
     description: Overall trips statistics
+
+  - name: trips_stat_daily
+    description: Overall trips statistics per day
     
   - name: trips_age_daily
     description: Daily trips statistics by user age
@@ -58,8 +63,6 @@ models:
           column_name: "date::text || age::text" 
       - unique_key: 
           columns: [date, age]
-
-
 
   - name: trips_age_daily_stat
     description: Aggregation of daily trips statistics by user age
