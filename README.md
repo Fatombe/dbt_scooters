@@ -60,7 +60,7 @@ py -m pip install --upgrade pip # обновление pip
 py -m venv .venv # создание виртуального окружения в папке
 .venv\Scripts\activate # активация виртуального окружения
 # Установка dbt
-pip install dbt-core dbt-postgres # установка dbt-core и адаптера для базы данных PostgreSQL
+pip install dbt-core dbt-postgres # установка dbt-core и адаптера для базы данных PostgreSQL или pip install -r requirements.txt
 dbt --version # проверка версии dbt
 dbt init dbt_scooters # создание новой папки с проектом dbt (указывается данные базы) и файла profiles.yml
 # Переходим в папку проекта
@@ -124,6 +124,8 @@ dbt test -s source:scooters_raw.users # запуск теста
 
 dbt docs generate # Генерирует документацию для моделей.
 dbt docs serve # Запускает локальный сервер для просмотра документации.
+
+dbt deps # Установка пакетов из dependencies.yml
 
 --full-refresh # флаг полного обновления, сокращенно -f
 --select # выбор модели, сокращенно -s
