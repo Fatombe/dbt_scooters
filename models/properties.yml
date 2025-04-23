@@ -162,4 +162,4 @@ models:
       - name: age
         description: Numerical age of user
         data_tests:
-          - dbt_utils.not_constant
+          - "dbt_utils.not_constant"
