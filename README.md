@@ -119,7 +119,11 @@ dbt run-operation create_role --args "name: finance" # выполнение DDL 
 
 dbt source freshness # проверка свежести всех источников
 
-dbt test -s source:scooters_raw.users
+dbt test -s source:scooters_raw.users # запуск теста
+
+
+dbt docs generate # Генерирует документацию для моделей.
+dbt docs serve # Запускает локальный сервер для просмотра документации.
 
 --full-refresh # флаг полного обновления, сокращенно -f
 --select # выбор модели, сокращенно -s
