@@ -44,10 +44,13 @@ sources:
         description: "Raw user events with duplicates"
 
 models:
-  - name: trips_prep
-    description: Trips prepared for analysis
+  - name: "trips_prep"
+    description: "Trips prepared for analysis"
     config:
-      materialized: view
+      materialized: "view"
+    data_tests:
+      - row_count_equal:
+          compare_model: "source('scooters_raw', 'trips')"
 
 
   - name: trips_stat
@@ -154,12 +157,14 @@ models:
 
 
   - name: "sex_age_pivot"
-    description: "Trips per age pivoted by sex"
+    description: "Trips per age grouped by sex"
     data_tests:
       - unique_key:
           columns: [ "age" ]
+      - dbt_expectations.expect_table_column_count_to_equal:
+          value: 3
     columns:
-      - name: age
-        description: Numerical age of user
+      - name: "age"
+        description: "Numerical age of user"
         data_tests:
           - "dbt_utils.not_constant"
