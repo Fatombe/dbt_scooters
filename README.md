@@ -134,3 +134,22 @@ dbt deps # Установка пакетов из dependencies.yml
 --vars #  передача модели строки с переменными в виде YAML-словаря
 --args # передача аргументов в макрос ПРОЕКТА
 ```
+
+```bash
+# Семантический слой
+
+mf --version # проверка версии MetricFlow
+dbt parse # обновить semantic_manifest.json
+mf health-checks # проверка корректного подключения к хранилищу
+mf validate-configs # проверка что семантический слой описан без ошибок
+mf list metrics # список метрик
+mf list dimensions --metrics revenue_sum # список размерностей для выбранной метрики
+mf list dimension-values --metrics revenue_sum --dimension trip__sex # список доступных значений метрики
+mf query --metrics revenue_sum # запрос метрики
+mf query --metrics revenue_sum --group-by trip__started_at --order trip__started_at # группировка, сортировка
+mf query --metrics revenue_avg,revenue_sum,revenue_cumsum --group-by trip__started_at__month --order trip__started_at__month # помесячно, вывод нескольких метрик одновременно
+mf query --metrics trips_count,duration_m_median --group-by trip__age --order trip__age # медиана
+mf query --metrics trips_count --group-by scooter__model --order trips_count --where "{{Dimension('trip__sex')}}='M'"
+mf query --metrics trips_per_scooter --group-by scooter__company --explain # сгенерировать SQL-код
+mf query --metrics trips_per_scooter --group-by scooter__company --csv data.csv # выгрузить в CSV-файл
+```

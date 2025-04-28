@@ -52,6 +52,13 @@ models:
       - row_count_equal:
           compare_model: "source('scooters_raw', 'trips')"
 
+  - name: "users_prep"
+    description: "Users prepared for analysis without sensitive data"
+    config:
+      materialized: "view"
+    data_tests:
+      - row_count_equal:
+          compare_model: "source('scooters_raw', 'users')"
 
   - name: trips_stat
     description: Overall trips statistics
@@ -184,3 +191,56 @@ models:
 
   - name: "metricflow_time_spine"
     description: "Time spine calendar for metricflow"
+
+  - name: users_class_weekly_trips
+    description: >  
+        Классификация пользователей по поездкам в течение недели. Признаки:
+        regular - регулярный пользователь, катается не менее 3 дней в неделю
+        fan - фанат, пользуется сервисом в среднем не менее 6 дней в неделю
+    data_tests:
+      - unique_key:
+          columns:  [ "user_id" ]
+    columns:
+      - name: "regular"
+        description: "Regular user, rides at least 3 days a week"
+      - name: "fan"
+        description: "Enthusiast, uses the service on average at least 6 days a week"
+
+  - name: users_class_weekly_destination_trips
+    description:  > 
+      Классификация пользователей по поездкам в течение недели
+      с учетом точки назначения:
+      to_work - в утреннее время ездит в одно и то же место (на работу)
+      минимум три раза в неделю
+    data_tests:
+      - unique_key:
+          columns: [ "user_id"]
+    columns:
+      - name: to_work
+        description: "Travels to the same place (to work) in the morning at least three times a week"
+
+
+  - name: "users_class_monthly_trips"
+    description: "User classification based on the number of trips per month"
+    data_tests:
+      - unique_key:
+          columns: [ "user_id" ]
+    columns:
+      - name: "rare"
+        description: "infrequent/occasional trips, no more than 2 trips per month"
+
+
+  - name: "users_class"
+    description: >
+      Combining all features into a consolidated table.
+      Joining with the users table to label each user
+    data_tests:
+      - unique_key:
+          columns: [ "user_id" ]
+
+
+  - name: "users_class_stat"
+    description: >
+      Calculation of overall group statistics:
+        - number of users in each group
+        - total number of users for information and validation
