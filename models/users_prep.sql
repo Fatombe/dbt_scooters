@@ -1,4 +1,4 @@
-select 
+select
     id,
     sex,
     birth_date

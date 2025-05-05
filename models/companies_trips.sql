@@ -1,10 +1,13 @@
 with
-    trips_cte as (
-        select c.company, count(*) as trips
-        from {{ ref("trips_prep") }} as tp
-        join {{ ref("scooters") }} as c on tp.scooter_hw_id = c.hardware_id
-        group by 1
-    )
+trips_cte as (
+    select
+        c.company,
+        count(*) as trips
+    from {{ ref("trips_prep") }} as tp
+    join {{ ref("scooters") }} as c on tp.scooter_hw_id = c.hardware_id
+    group by 1
+)
+
 select
     company,
     t.trips,

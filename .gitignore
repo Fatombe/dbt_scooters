@@ -3,3 +3,5 @@ target/
 dbt_packages/
 logs/
 profiles.yml
+scooters.duckdb
+revenue_weather.csv

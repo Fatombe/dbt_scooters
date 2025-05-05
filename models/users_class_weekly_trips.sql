@@ -16,4 +16,3 @@ select
     avg(days_per_week) >= 3 as regular
 from weekly_stat_cte
 group by 1
-    

@@ -9,6 +9,7 @@ with monthly_stat_cte as (
         1,
         2
 )
+
 select
     user_id,
     sum(trips_per_month) <= 2 as rare

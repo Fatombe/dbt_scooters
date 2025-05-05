@@ -1,6 +1,6 @@
 select
     age,
-    {{dbt_utils.default__pivot("sex", ["M", "F"])}}
+    {{ dbt_utils.default__pivot("sex", ["M", "F"]) }}
 from
     {{ ref("trips_users") }}
 group by
