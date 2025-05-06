@@ -19,9 +19,9 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir site
-          cp target/index.html site/
-          cp target/manifest.json site/
-          cp target/catalog.json site/
+          cp docs/index.html site/
+          cp docs/manifest.json site/
+          cp docs/catalog.json site/
 
       - name: Commit site for GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
