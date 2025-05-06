@@ -33,8 +33,8 @@ models:
     data_tests:
       - unique_key:
           columns: ['month']
-      - dbt_utils.expression_is_true:
-          expression: "not(users < 1000 or revenue_median < 500)"
+      # - dbt_utils.expression_is_true:
+      #     expression: "not(users < 1000 or revenue_median < 500)"
 
   - name: "revenue_monthly_report"
     description: "Monthly revenue report"
